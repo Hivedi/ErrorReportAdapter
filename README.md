@@ -1,0 +1,2 @@
+# ErrorReportAdapter
+Error reporting adapter
