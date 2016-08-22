@@ -24,7 +24,7 @@ Sample code:
 ERA.addAdapter(new ReportInterface() {
 	@Override
 	public void logException(Throwable throwable) {
-		Log.e("tests", "key", throwable);
+		Log.e("tests", "Error=" + throwable);
 	}
 });
 

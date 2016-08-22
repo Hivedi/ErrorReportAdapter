@@ -1,7 +1,5 @@
 package com.hivedi.era;
 
-import android.support.annotation.NonNull;
-
 import java.util.ArrayList;
 
 /**
@@ -64,9 +62,46 @@ public class ERA {
         }
     }
 
+	public static void logWarn(Throwable e) {
+		if (adapters.size() > 0) {
+			for(Object ri : adapters) {
+				if (ri instanceof ReportInterface) {
+					((ReportInterface) ri).logWarn(e);
+				}
+			}
+		}
+	}
+	public static void logWarn(Exception e) {
+		if (adapters.size() > 0) {
+			for(Object ri : adapters) {
+				if (ri instanceof ReportInterface) {
+					((ReportInterface) ri).logWarn(e);
+				}
+			}
+		}
+	}
+
+	public static void logInfo(Throwable e) {
+		if (adapters.size() > 0) {
+			for(Object ri : adapters) {
+				if (ri instanceof ReportInterface) {
+					((ReportInterface) ri).logInfo(e);
+				}
+			}
+		}
+	}
+	public static void logInfo(Exception e) {
+		if (adapters.size() > 0) {
+			for(Object ri : adapters) {
+				if (ri instanceof ReportInterface) {
+					((ReportInterface) ri).logInfo(e);
+				}
+			}
+		}
+	}
+
     @SuppressWarnings({"unchecked", "TryWithIdenticalCatches", "ConstantConditions"})
-    @NonNull
-    public static <T> T getReportInterface(Class<T> cls) {
+     public static <T> T getReportInterface(Class<T> cls) {
         T res = null;
         if (adapters.size() > 0) {
             for(Object ri : adapters) {
