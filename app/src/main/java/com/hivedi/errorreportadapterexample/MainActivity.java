@@ -14,13 +14,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ERA.addAdapter(new ReportInterface() {
-            @Override
-            public void logException(Throwable e) {
-                Log.e("a", "tag", e);
-            }
-        });
+	    ERA.registerAdapter(new ReportInterface() {
+		    @Override
+		    public void logException(Throwable e, Object... metaParams) {
+			    Log.e("a", "error=" + e + ", param1=" + metaParams[0] + ", param2=" + metaParams[1], e);
+		    }
+	    });
 
-        ERA.logException(new Exception("aaa"));
+        ERA.logException(new RuntimeException("aaa"), "test1", "test2");
     }
 }
