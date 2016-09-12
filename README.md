@@ -15,19 +15,18 @@ repositories {
 Dependences:
 ```
 dependencies {
-	compile 'com.github.Hivedi:ErrorReportAdapter:1.0.0'
+	compile 'com.github.Hivedi:ErrorReportAdapter:2.0.0'
 }
 ```
 
 Sample code:
 ```java
-ERA.addAdapter(new ReportInterface() {
-	@Override
-	public void logException(Throwable throwable) {
-		Log.e("tests", "Error=" + throwable);
-	}
+ERA.registerAdapter(new ReportInterface() {
+    @Override
+    public void logException(Throwable e, Object... metaParams) {
+	    Log.e("a", "error=" + e + ", param1=" + metaParams[0] + ", param2=" + metaParams[1], e);
+    }
 });
 
-// to log exceptions
-ERA.logException(new Exception("xx"));
+ERA.logException(new RuntimeException("aaa"), "test1", "test2");
 ```
