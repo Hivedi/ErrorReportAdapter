@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class ERA {
 
-    volatile static ArrayList<Object> adapters = new ArrayList<>();
+    private volatile static ArrayList<Object> adapters = new ArrayList<>();
 
     public static synchronized void registerAdapter(ReportInterface ri) {
         adapters.add(ri);
@@ -31,5 +31,25 @@ public class ERA {
 			}
 		}
 	}
+
+    public static synchronized void log(String s, Object... extraParams) {
+        if (adapters.size() > 0) {
+            for(Object ri : adapters) {
+                if (ri instanceof ReportInterface) {
+                    ((ReportInterface) ri).log(s, extraParams);
+                }
+            }
+        }
+    }
+
+    public static synchronized void breadcrumb(String s, Object... extraParams) {
+        if (adapters.size() > 0) {
+            for(Object ri : adapters) {
+                if (ri instanceof ReportInterface) {
+                    ((ReportInterface) ri).breadcrumb(s, extraParams);
+                }
+            }
+        }
+    }
 
 }

@@ -7,5 +7,7 @@ package com.hivedi.era;
 public abstract class ReportInterface {
 
 	public abstract void logException(Throwable e, Object... metaParams);
+    public abstract void log(String s, Object... extraParams);
+    public abstract void breadcrumb(String s, Object... extraParams);
 
 }
