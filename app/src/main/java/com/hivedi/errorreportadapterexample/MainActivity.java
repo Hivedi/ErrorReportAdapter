@@ -1,8 +1,9 @@
 package com.hivedi.errorreportadapterexample;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.hivedi.era.ERA;
 import com.hivedi.era.ReportInterface;
